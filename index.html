@@ -158,28 +158,33 @@
 
     .tiny-note { font-size:0.9rem; color:#8a1b2a; }
 
-    .costume-scroller {
-      position:relative; width:100%; height:220px; overflow:hidden; border-radius:24px;
-      border:2px solid #ffd7e7; background:#fff; display:flex; align-items:center; justify-content:center;
-      margin:16px 0 8px; box-shadow:0 4px 8px rgba(0,0,0,0.05);
+    /* Статичная галерея */
+    .photo-gallery {
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding:10px 0;
+      margin:16px 0;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:thin;
     }
-    .costume-track { display:flex; height:100%; transition: transform 0.6s ease-in-out; }
-    .costume-slide { min-width:100%; height:100%; background-size:cover; background-position:center; background-repeat:no-repeat; }
-
-    .nav-arrow { position:absolute; top:50%; transform: translateY(-50%);
-      width:40px; height:40px; border-radius:50%; background:#fff; border:2px solid #ff99bb;
-      display:flex; align-items:center; justify-content:center; cursor:pointer;
-      box-shadow:0 4px 8px rgba(180,0,80,0.2); color:#cc0066; font-size:1.3rem; z-index:5;
-      transition:0.2s; }
-    .nav-arrow:hover { background:#ffe4f0; }
-    .nav-arrow.left { left:8px; }
-    .nav-arrow.right { right:8px; }
-
-    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: #ffb3d1; border: 1px solid #fff; cursor: pointer; transition: 0.2s; }
-    .dot.active { background: #cc0066; transform: scale(1.3); }
-
-    #rsvpStatus { margin-top:16px; text-align:center; font-size:0.95rem; font-weight:500; min-height:24px; }
+    .photo-gallery::-webkit-scrollbar {
+      height:6px;
+    }
+    .photo-gallery::-webkit-scrollbar-thumb {
+      background:#ff99bb;
+      border-radius:10px;
+    }
+    .photo-item {
+      min-width:280px;
+      height:350px;
+      border-radius:16px;
+      background-size:cover;
+      background-position:center;
+      flex-shrink:0;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      border:2px solid #ffd7e7;
+    }
 
     @media (max-width: 450px) {
       .invitation { padding:20px 16px; }
@@ -189,7 +194,7 @@
       .section-title { font-size:1.8rem; }
       .rsvp-actions { flex-direction:column; }
       .button { width:100%; }
-      .costume-scroller { height:180px; }
+      .photo-item { min-width:250px; height:300px; }
     }
 
     @keyframes pulse {
@@ -284,21 +289,16 @@
       <div class="swatch sw6" title="светло-лайм"></div>
     </div>
 
-    <!-- ТЕСТОВАЯ КАРУСЕЛЬ -->
-    <div class="costume-scroller">
-      <button class="nav-arrow left" id="prevCostume" aria-label="Предыдущий">❮</button>
-      <div class="costume-track" id="costumeTrack">
-        <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-        <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-        <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-        <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1721558/pexels-photo-1721558.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-        <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/265722/pexels-photo-265722.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-        <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-        <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1214212/pexels-photo-1214212.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-      </div>
-      <button class="nav-arrow right" id="nextCostume" aria-label="Следующий">❯</button>
+    <!-- СТАТИЧНАЯ ГАЛЕРЕЯ (ТОЧНО РАБОТАЕТ) -->
+    <div class="photo-gallery">
+      <div class="photo-item" style="background-image:url('https://i.ibb.co/BpwPHph/image.jpg');"></div>
+      <div class="photo-item" style="background-image:url('https://i.ibb.co/JFnH1wF9/2.jpg');"></div>
+      <div class="photo-item" style="background-image:url('https://i.ibb.co/0yWKvwcZ/3.jpg');"></div>
+      <div class="photo-item" style="background-image:url('https://i.ibb.co/99K5Y2p4/4.jpg');"></div>
+      <div class="photo-item" style="background-image:url('https://i.ibb.co/Wv6crqBG/5.jpg');"></div>
+      <div class="photo-item" style="background-image:url('https://i.ibb.co/C5VT5sYB/6.jpg');"></div>
+      <div class="photo-item" style="background-image:url('https://i.ibb.co/pBFyfFGb/7.jpg');"></div>
     </div>
-    <div class="carousel-dots" id="carouselDots"></div>
 
     <!-- Детали -->
     <h2 class="section-title">
@@ -376,41 +376,6 @@
       
       updateCountdown();
       setInterval(updateCountdown, 1000);
-    })();
-
-    // --- КАРУСЕЛЬ ---
-    (function() {
-      const track = document.getElementById('costumeTrack');
-      const slides = track.querySelectorAll('.costume-slide');
-      const prevBtn = document.getElementById('prevCostume');
-      const nextBtn = document.getElementById('nextCostume');
-      const dotsContainer = document.getElementById('carouselDots');
-      let currentIndex = 0;
-      const totalSlides = slides.length;
-
-      function createDots() {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalSlides; i++) {
-          const dot = document.createElement('span');
-          dot.classList.add('dot');
-          if (i === 0) dot.classList.add('active');
-          dot.addEventListener('click', () => goToSlide(i));
-          dotsContainer.appendChild(dot);
-        }
-      }
-      createDots();
-
-      const dots = document.querySelectorAll('.dot');
-
-      function goToSlide(index) {
-        currentIndex = (index + totalSlides) % totalSlides;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-      }
-
-      prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-      nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-      setInterval(() => goToSlide(currentIndex + 1), 5000);
     })();
 
     // --- ОТПРАВКА В TELEGRAM ---
