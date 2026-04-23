@@ -11,7 +11,6 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    /* ... весь ваш CSS код стилей (я его не сокращал, он полностью из предыдущего ответа) ... */
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       background: linear-gradient(145deg, #fff0f5 0%, #ffe4f3 100%);
@@ -288,17 +287,17 @@
       <div class="swatch sw6" title="светло-лайм"></div>
     </div>
 
-    <!-- КАРУСЕЛЬ С ВАШИМИ ФОТО (РАБОЧИЕ ССЫЛКИ) -->
+    <!-- КАРУСЕЛЬ С ВАШИМИ ФОТО -->
     <div class="costume-scroller">
       <button class="nav-arrow left" id="prevCostume" aria-label="Предыдущий">❮</button>
       <div class="costume-track" id="costumeTrack">
-        <div class="costume-slide" style="background-image:url('https://upload.cc/i1/2026/04/23/zXwvtN.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://upload.cc/i1/2026/04/23/sSZBwb.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://upload.cc/i1/2026/04/23/yP8Z7B.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://upload.cc/i1/2026/04/23/kPd3ZT.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://upload.cc/i1/2026/04/23/mQVYRf.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://upload.cc/i1/2026/04/23/3kDZhg.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://upload.cc/i1/2026/04/23/X8QJLn.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/301bf3dcf549d61f54a4097428b5b0f77f6078be/1.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/301bf3dcf549d61f54a4097428b5b0f77f6078be/2.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/301bf3dcf549d61f54a4097428b5b0f77f6078be/3.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/301bf3dcf549d61f54a4097428b5b0f77f6078be/4.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/301bf3dcf549d61f54a4097428b5b0f77f6078be/5.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/301bf3dcf549d61f54a4097428b5b0f77f6078be/6.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/301bf3dcf549d61f54a4097428b5b0f77f6078be/7.jpg');"></div>
       </div>
       <button class="nav-arrow right" id="nextCostume" aria-label="Следующий">❯</button>
     </div>
@@ -352,20 +351,16 @@
   </div>
 
   <script>
-    // --- НАСТРОЙКИ ТЕЛЕГРАМ ---
+    // --- НАСТРОЙКИ ТЕЛЕГРАМ И ПРОКСИ ---
     const TELEGRAM_BOT_TOKEN = '8770696570:AAFZ7u7et8gjL9mZiG4bXArIgA50Iw_8dX4';
     const TELEGRAM_CHAT_ID = '435499286';
+    const PROXY_URL = 'https://my-telegram-proxy.danil-zverev-2017.workers.dev';
 
-    // --- ТАЙМЕР ---
+    // --- ТАЙМЕР (исправлен для телефонов) ---
     (function() {
-      const WEDDING_YEAR = 2026;
-      const WEDDING_MONTH = 7;
-      const WEDDING_DAY = 8;
-      const WEDDING_HOUR = 15;
-      
-      const weddingDate = new Date(WEDDING_YEAR, WEDDING_MONTH, WEDDING_DAY, WEDDING_HOUR, 0, 0);
-      
       function updateCountdown() {
+        // Задаём дату напрямую, чтобы избежать ошибок часовых поясов
+        const weddingDate = new Date(2026, 7, 8, 15, 0, 0);
         const now = new Date();
         const diff = weddingDate - now;
         
@@ -377,15 +372,10 @@
           return;
         }
         
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (86400000)) / (3600000));
-        const minutes = Math.floor((diff % 3600000) / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-        
-        document.getElementById('days').innerText = days;
-        document.getElementById('hours').innerText = hours;
-        document.getElementById('minutes').innerText = minutes;
-        document.getElementById('seconds').innerText = seconds;
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((diff % (86400000)) / (3600000));
+        document.getElementById('minutes').innerText = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('seconds').innerText = Math.floor((diff % 60000) / 1000);
       }
       
       updateCountdown();
@@ -393,22 +383,41 @@
     })();
 
     // --- КАРУСЕЛЬ ---
-    <!-- КАРУСЕЛЬ С НАДЁЖНЫМИ ИЗОБРАЖЕНИЯМИ (для проверки) -->
-<div class="costume-scroller">
-  <button class="nav-arrow left" id="prevCostume" aria-label="Предыдущий">❮</button>
-  <div class="costume-track" id="costumeTrack">
-    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1721558/pexels-photo-1721558.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/265722/pexels-photo-265722.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1214212/pexels-photo-1214212.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-  </div>
-  <button class="nav-arrow right" id="nextCostume" aria-label="Следующий">❯</button>
-</div>
+    (function() {
+      const track = document.getElementById('costumeTrack');
+      const slides = track.querySelectorAll('.costume-slide');
+      const prevBtn = document.getElementById('prevCostume');
+      const nextBtn = document.getElementById('nextCostume');
+      const dotsContainer = document.getElementById('carouselDots');
+      let currentIndex = 0;
+      const totalSlides = slides.length;
 
-    // --- ОТПРАВКА В TELEGRAM ---
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('dot');
+          if (i === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+      createDots();
+
+      const dots = document.querySelectorAll('.dot');
+
+      function goToSlide(index) {
+        currentIndex = (index + totalSlides) % totalSlides;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+      }
+
+      prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+      nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+      setInterval(() => goToSlide(currentIndex + 1), 5000);
+    })();
+
+    // --- ОТПРАВКА В TELEGRAM ЧЕРЕЗ ПРОКСИ ---
     const form = document.getElementById('rsvpForm');
     const statusDiv = document.getElementById('rsvpStatus');
 
@@ -416,32 +425,20 @@
       const message = `💌 *НОВОЕ ПОДТВЕРЖДЕНИЕ*\n\n👤 *Имя:* ${name}\n✅ *Присутствие:* ${attendance}\n📅 *Отправлено:* ${new Date().toLocaleString('ru-RU')}`;
 
       try {
-        return new Promise((resolve, reject) => {
-          const xhr = new XMLHttpRequest();
-          xhr.open('POST', `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, true);
-          xhr.setRequestHeader('Content-Type', 'application/json');
-          
-          xhr.onload = function() {
-            if (xhr.status === 200) {
-              const data = JSON.parse(xhr.responseText);
-              resolve(data.ok);
-            } else {
-              reject(new Error('Ошибка сети'));
-            }
-          };
-          
-          xhr.onerror = function() {
-            reject(new Error('Ошибка соединения'));
-          };
-          
-          xhr.send(JSON.stringify({
+        const response = await fetch(`${PROXY_URL}/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
             chat_id: TELEGRAM_CHAT_ID,
             text: message,
             parse_mode: 'Markdown'
-          }));
+          })
         });
+        
+        const data = await response.json();
+        return data.ok;
       } catch (error) {
-        console.error('Ошибка:', error);
+        console.error('Ошибка отправки:', error);
         return false;
       }
     }
@@ -449,11 +446,8 @@
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      const nameInput = document.getElementById('guestName');
-      const attendanceSelect = document.getElementById('guestAttendance');
-      
-      const name = nameInput.value.trim();
-      const attendance = attendanceSelect.value;
+      const name = document.getElementById('guestName').value.trim();
+      const attendance = document.getElementById('guestAttendance').value;
       
       if (!name || !attendance) {
         statusDiv.textContent = '❌ Пожалуйста, укажите имя и выберите ответ';
@@ -464,19 +458,14 @@
       statusDiv.textContent = '⏳ Отправляем...';
       statusDiv.style.color = '#cc0066';
       
-      try {
-        const success = await sendToTelegram(name, attendance);
-        
-        if (success) {
-          statusDiv.innerHTML = '✅ Спасибо! Ваше подтверждение получено! ❤️';
-          statusDiv.style.color = '#2a5e2a';
-          form.reset();
-        } else {
-          throw new Error('Ошибка отправки');
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-        statusDiv.textContent = '❌ Ошибка отправки. Попробуйте позже или свяжитесь с нами лично.';
+      const success = await sendToTelegram(name, attendance);
+      
+      if (success) {
+        statusDiv.innerHTML = '✅ Спасибо! Ваше подтверждение получено! ❤️';
+        statusDiv.style.color = '#2a5e2a';
+        form.reset();
+      } else {
+        statusDiv.textContent = '❌ Ошибка. Попробуйте позже или свяжитесь с нами лично.';
         statusDiv.style.color = '#b30047';
       }
     });
