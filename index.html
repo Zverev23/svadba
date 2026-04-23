@@ -132,7 +132,7 @@
     .wish-highlight { font-style:italic; background:#fff0fa; padding:14px 18px; border-radius:30px 8px 30px 8px;
       border-left:6px solid #e6005c; margin:18px 0; font-weight:500; color:#3d0d20; }
 
-    .rsvp-card { margin-top:14px; padding:0; background:#fff0f8; border-radius:20px;
+    .rsvp-card { margin-top:14px; background:#fff0f8; border-radius:20px;
       border:2px solid #ff66a3; box-shadow:0 6px 0 #eaa2b7; padding:18px; }
     .rsvp-title { font-weight:700; text-align:center; color:#8f0040; letter-spacing:1px; margin-bottom:8px; font-size:1.2rem; }
     .rsvp-deadline { text-align:center; font-size:0.95rem; color:#b30059; margin-bottom:16px; font-weight:500; }
@@ -160,7 +160,7 @@
 
     .costume-scroller {
       position:relative; width:100%; height:220px; overflow:hidden; border-radius:24px;
-      border:2px solid #ffd7e7; background:#ffe4f0; display:flex; align-items:center; justify-content:center;
+      border:2px solid #ffd7e7; background:#fff; display:flex; align-items:center; justify-content:center;
       margin:16px 0 8px; box-shadow:0 4px 8px rgba(0,0,0,0.05);
     }
     .costume-track { display:flex; height:100%; transition: transform 0.6s ease-in-out; }
@@ -284,17 +284,17 @@
       <div class="swatch sw6" title="светло-лайм"></div>
     </div>
 
-    <!-- КАРУСЕЛЬ С ВАШИМИ ФОТО -->
+    <!-- КАРУСЕЛЬ С ФОТО IMGBB (ТОЧНО РАБОТАЕТ) -->
     <div class="costume-scroller">
       <button class="nav-arrow left" id="prevCostume" aria-label="Предыдущий">❮</button>
       <div class="costume-track" id="costumeTrack">
-        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/refs/heads/main/2.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/refs/heads/main/3.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/refs/heads/main/4.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/refs/heads/main/5.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/refs/heads/main/6.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/refs/heads/main/7.jpg');"></div>
-        <div class="costume-slide" style="background-image:url('https://raw.githubusercontent.com/Zverev23/svadba/refs/heads/main/1.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://i.ibb.co/BpwPHph/image.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://i.ibb.co/JFnH1wF9/2.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://i.ibb.co/0yWKvwcZ/3.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://i.ibb.co/99K5Y2p4/4.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://i.ibb.co/Wv6crqBG/5.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://i.ibb.co/C5VT5sYB/6.jpg');"></div>
+        <div class="costume-slide" style="background-image:url('https://i.ibb.co/pBFyfFGb/7.jpg');"></div>
       </div>
       <button class="nav-arrow right" id="nextCostume" aria-label="Следующий">❯</button>
     </div>
@@ -353,7 +353,7 @@
     const TELEGRAM_CHAT_ID = '435499286';
     const PROXY_URL = 'https://my-telegram-proxy.danil-zverev-2017.workers.dev';
 
-    // --- ТАЙМЕР (ИСПРАВЛЕН - запускается сразу) ---
+    // --- ТАЙМЕР (работает сразу) ---
     (function() {
       function updateCountdown() {
         const weddingDate = new Date(2026, 7, 8, 15, 0, 0);
@@ -374,9 +374,7 @@
         document.getElementById('seconds').innerText = Math.floor((diff % 60000) / 1000);
       }
       
-      // Запускаем немедленно
       updateCountdown();
-      // И обновляем каждую секунду
       setInterval(updateCountdown, 1000);
     })();
 
@@ -415,7 +413,7 @@
       setInterval(() => goToSlide(currentIndex + 1), 5000);
     })();
 
-    // --- ОТПРАВКА В TELEGRAM (ИСПРАВЛЕНО - работает с первого раза) ---
+    // --- ОТПРАВКА В TELEGRAM ---
     const form = document.getElementById('rsvpForm');
     const statusDiv = document.getElementById('rsvpStatus');
 
