@@ -158,7 +158,7 @@
 
     .tiny-note { font-size:0.9rem; color:#8a1b2a; }
 
-    /* Галерея с img — без обрезки */
+    /* Галерея — фото без обрезки, оригинальные пропорции */
     .photo-gallery {
       display:flex;
       gap:12px;
@@ -167,6 +167,7 @@
       margin:16px 0;
       -webkit-overflow-scrolling:touch;
       scrollbar-width:thin;
+      align-items:flex-start;
     }
     .photo-gallery::-webkit-scrollbar {
       height:6px;
@@ -176,17 +177,16 @@
       border-radius:10px;
     }
     .photo-item {
-      min-width:280px;
-      max-width:90vw;
-      border-radius:16px;
       flex-shrink:0;
+      border-radius:16px;
       box-shadow:0 4px 12px rgba(0,0,0,0.1);
       border:2px solid #ffd7e7;
       overflow:hidden;
     }
     .photo-item img {
-      width:100%;
+      width:auto;
       height:auto;
+      max-height:400px;
       display:block;
       border-radius:14px;
     }
@@ -199,7 +199,7 @@
       .section-title { font-size:1.8rem; }
       .rsvp-actions { flex-direction:column; }
       .button { width:100%; }
-      .photo-item { min-width:250px; }
+      .photo-item img { max-height:300px; }
     }
 
     @keyframes pulse {
@@ -276,7 +276,7 @@
       <li><span class="time">22:00</span> <span class="event">Финал вечера</span></li>
     </ul>
 
-    <!-- Дресс-код (зелёный темнее) -->
+    <!-- Дресс-код -->
     <h2 class="section-title">
       <i class="fas fa-palette"></i> ДРЕСС-КОД <i class="fas fa-palette"></i>
     </h2>
@@ -294,7 +294,7 @@
       <div class="swatch sw6" title="тёмно-зелёный"></div>
     </div>
 
-    <!-- ГАЛЕРЕЯ С ТЕГАМИ IMG (БЕЗ ОБРЕЗКИ) -->
+    <!-- ГАЛЕРЕЯ — ВИДНО ВСЁ ПЛАТЬЕ -->
     <div class="photo-gallery">
       <div class="photo-item"><img src="https://i.ibb.co/BpwPHph/image.jpg" alt="Фото 1" /></div>
       <div class="photo-item"><img src="https://i.ibb.co/JFnH1wF9/2.jpg" alt="Фото 2" /></div>
