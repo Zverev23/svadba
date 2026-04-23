@@ -101,7 +101,7 @@
       margin:30px 0 12px; text-align:center; letter-spacing:2px; color:#8f0040;
       display:flex; align-items:center; justify-content:center; gap:15px; }
     .section-title i { color:#ff3385; font-size:1.8rem; }
-    .divider-light { width:80px; height:3px; background:linear-gradient(90deg, #ff99bb, #cc0066, #aaff66); margin:8px auto 16px; border-radius:10px; }
+    .divider-light { width:80px; height:3px; background:linear-gradient(90deg, #ff99bb, #cc0066, #5a8f00); margin:8px auto 16px; border-radius:10px; }
 
     .location-card {
       background:#ffe4f0; padding:18px 18px; border-radius:32px 32px 32px 8px;
@@ -123,7 +123,7 @@
     .palette-swatch { display:flex; gap:14px; margin:20px 0 10px; flex-wrap:wrap; justify-content:center; }
     .swatch { width:54px; height:54px; border-radius:30% 70% 70% 30% / 30% 30% 70% 70%; box-shadow:0 6px 0 #b33c6b, 0 4px 8px rgba(0,0,0,0.1); border:2px solid white; transition:0.2s; }
     .sw1 { background:#ffb3d9; } .sw2 { background:#ff66a3; } .sw3 { background:#cc0066; } .sw4 { background:#e6005c; }
-    .sw5 { background:#ccff99; } .sw6 { background:#b3ff66; }
+    .sw5 { background:#9acd32; } .sw6 { background:#6b8e23; }
 
     .details-block {
       background:#ffe4f2; border-radius:30px 30px 30px 0; padding:24px 20px;
@@ -158,7 +158,7 @@
 
     .tiny-note { font-size:0.9rem; color:#8a1b2a; }
 
-    /* Статичная галерея — фото полностью видны */
+    /* Галерея с img — без обрезки */
     .photo-gallery {
       display:flex;
       gap:12px;
@@ -177,15 +177,18 @@
     }
     .photo-item {
       min-width:280px;
-      height:350px;
+      max-width:90vw;
       border-radius:16px;
-      background-size:contain;
-      background-repeat:no-repeat;
-      background-position:center;
-      background-color:#fff;
       flex-shrink:0;
       box-shadow:0 4px 12px rgba(0,0,0,0.1);
       border:2px solid #ffd7e7;
+      overflow:hidden;
+    }
+    .photo-item img {
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
     }
 
     @media (max-width: 450px) {
@@ -196,7 +199,7 @@
       .section-title { font-size:1.8rem; }
       .rsvp-actions { flex-direction:column; }
       .button { width:100%; }
-      .photo-item { min-width:250px; height:300px; }
+      .photo-item { min-width:250px; }
     }
 
     @keyframes pulse {
@@ -273,7 +276,7 @@
       <li><span class="time">22:00</span> <span class="event">Финал вечера</span></li>
     </ul>
 
-    <!-- Дресс-код -->
+    <!-- Дресс-код (зелёный темнее) -->
     <h2 class="section-title">
       <i class="fas fa-palette"></i> ДРЕСС-КОД <i class="fas fa-palette"></i>
     </h2>
@@ -287,19 +290,19 @@
       <div class="swatch sw2" title="розовый"></div>
       <div class="swatch sw3" title="малиновый"></div>
       <div class="swatch sw4" title="ярко-розовый"></div>
-      <div class="swatch sw5" title="лайм"></div>
-      <div class="swatch sw6" title="светло-лайм"></div>
+      <div class="swatch sw5" title="зелёный"></div>
+      <div class="swatch sw6" title="тёмно-зелёный"></div>
     </div>
 
-    <!-- СТАТИЧНАЯ ГАЛЕРЕЯ (ФОТО БЕЗ ОБРЕЗКИ) -->
+    <!-- ГАЛЕРЕЯ С ТЕГАМИ IMG (БЕЗ ОБРЕЗКИ) -->
     <div class="photo-gallery">
-      <div class="photo-item" style="background-image:url('https://i.ibb.co/BpwPHph/image.jpg');"></div>
-      <div class="photo-item" style="background-image:url('https://i.ibb.co/JFnH1wF9/2.jpg');"></div>
-      <div class="photo-item" style="background-image:url('https://i.ibb.co/0yWKvwcZ/3.jpg');"></div>
-      <div class="photo-item" style="background-image:url('https://i.ibb.co/99K5Y2p4/4.jpg');"></div>
-      <div class="photo-item" style="background-image:url('https://i.ibb.co/Wv6crqBG/5.jpg');"></div>
-      <div class="photo-item" style="background-image:url('https://i.ibb.co/C5VT5sYB/6.jpg');"></div>
-      <div class="photo-item" style="background-image:url('https://i.ibb.co/pBFyfFGb/7.jpg');"></div>
+      <div class="photo-item"><img src="https://i.ibb.co/BpwPHph/image.jpg" alt="Фото 1" /></div>
+      <div class="photo-item"><img src="https://i.ibb.co/JFnH1wF9/2.jpg" alt="Фото 2" /></div>
+      <div class="photo-item"><img src="https://i.ibb.co/0yWKvwcZ/3.jpg" alt="Фото 3" /></div>
+      <div class="photo-item"><img src="https://i.ibb.co/99K5Y2p4/4.jpg" alt="Фото 4" /></div>
+      <div class="photo-item"><img src="https://i.ibb.co/Wv6crqBG/5.jpg" alt="Фото 5" /></div>
+      <div class="photo-item"><img src="https://i.ibb.co/C5VT5sYB/6.jpg" alt="Фото 6" /></div>
+      <div class="photo-item"><img src="https://i.ibb.co/pBFyfFGb/7.jpg" alt="Фото 7" /></div>
     </div>
 
     <!-- Детали -->
