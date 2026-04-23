@@ -393,42 +393,20 @@
     })();
 
     // --- КАРУСЕЛЬ ---
-    (function() {
-      const track = document.getElementById('costumeTrack');
-      const slides = track.querySelectorAll('.costume-slide');
-      const prevBtn = document.getElementById('prevCostume');
-      const nextBtn = document.getElementById('nextCostume');
-      const dotsContainer = document.getElementById('carouselDots');
-      let currentIndex = 0;
-      const totalSlides = slides.length;
-
-      function createDots() {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalSlides; i++) {
-          const dot = document.createElement('span');
-          dot.classList.add('dot');
-          if (i === 0) dot.classList.add('active');
-          dot.addEventListener('click', () => goToSlide(i));
-          dotsContainer.appendChild(dot);
-        }
-      }
-      createDots();
-
-      const dots = document.querySelectorAll('.dot');
-
-      function goToSlide(index) {
-        currentIndex = (index + totalSlides) % totalSlides;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === currentIndex);
-        });
-      }
-
-      prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-      nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-      
-      setInterval(() => goToSlide(currentIndex + 1), 5000);
-    })();
+    <!-- КАРУСЕЛЬ С НАДЁЖНЫМИ ИЗОБРАЖЕНИЯМИ (для проверки) -->
+<div class="costume-scroller">
+  <button class="nav-arrow left" id="prevCostume" aria-label="Предыдущий">❮</button>
+  <div class="costume-track" id="costumeTrack">
+    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1721558/pexels-photo-1721558.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/265722/pexels-photo-265722.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="costume-slide" style="background-image:url('https://images.pexels.com/photos/1214212/pexels-photo-1214212.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+  </div>
+  <button class="nav-arrow right" id="nextCostume" aria-label="Следующий">❯</button>
+</div>
 
     // --- ОТПРАВКА В TELEGRAM ---
     const form = document.getElementById('rsvpForm');
